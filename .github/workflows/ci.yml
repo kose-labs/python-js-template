@@ -76,7 +76,7 @@ jobs:
       - name: Smoke test /health
         run: |
           docker run -d --name app -p 8000:8000 app-backend
-          curl --fail --silent --show-error --retry 10 --retry-connrefused --retry-delay 2 \
+          curl --fail --silent --show-error --retry 15 --retry-all-errors --retry-delay 2 \
             http://localhost:8000/health
       - name: Container logs on failure
         if: failure()
